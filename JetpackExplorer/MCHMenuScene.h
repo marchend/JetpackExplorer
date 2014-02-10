@@ -8,6 +8,9 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface MCHMyScene : SKScene
+@interface MCHMenuScene : SKScene
+
+@property (strong,atomic)SKSpriteNode *playButton;
+@property (strong,atomic)SKSpriteNode *leaderboardButton;
 
 @end
