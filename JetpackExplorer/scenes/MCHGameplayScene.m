@@ -7,6 +7,7 @@
 //
 
 #import "MCHGameplayScene.h"
+#import "MCHjetpackSprite.h"
 
 @implementation MCHGameplayScene
 
@@ -32,6 +33,19 @@
         title.fontColor = [UIColor whiteColor];
         title.position = CGPointMake(CGRectGetMidX(self.frame),self.frame.size.height - title.frame.size.height * 2);
         [self addChild:title];
+        
+        SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"sprites"];
+        SKTexture *spriteTextureA = [atlas textureNamed:@"sprite-01-a.png"];
+        SKTexture *spriteTextureB = [atlas textureNamed:@"aprite-01-b.png"];
+        NSArray *spriteTextureArray = @[spriteTextureA,spriteTextureB];
+
+        MCHJetpackSprite *jetpackToFall = [[MCHJetpackSprite alloc] initWithTexture:spriteTextureA color:[UIColor whiteColor] size:CGSizeMake(50, 33)];
+//        jetpackToFall.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+        jetpackToFall.position = CGPointMake(CGRectGetMidX(self.frame), self.frame.size.height);
+        jetpackToFall.textureArray = spriteTextureArray;
+        jetpackToFall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:jetpackToFall.size];
+        [self addChild:jetpackToFall];
+
         
     }
     return self;

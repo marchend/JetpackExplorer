@@ -10,4 +10,6 @@
 
 @interface MCHJetpackSprite : SKSpriteNode
 
+@property (strong,atomic) NSArray *textureArray;
+
 @end
