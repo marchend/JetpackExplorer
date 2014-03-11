@@ -14,7 +14,7 @@
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         
-        self.thrustForce = 2;
+        self.thrustForce = INITIALTHRUST;
         /* Setup your scene here */
         
         /* give the scene a background color
@@ -70,8 +70,7 @@
 -(void)update:(CFTimeInterval)currentTime {
     if (self.thrustOn) {
         [self.player thrustWithForce:self.thrustForce];
-        self.thrustForce = (self.thrustForce < MAXTHRUST) ? self.thrustForce++ : MAXTHRUST;
-        self.thrustForce++;
+        self.thrustForce = (self.thrustForce < MAXTHRUST) ? self.thrustForce + THRUSTACCELERATION : MAXTHRUST;
     }
 }
 
@@ -84,7 +83,7 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     NSLog(@"touches ended...");
     self.thrustOn = NO;
-    self.thrustForce = 2;
+    self.thrustForce = INITIALTHRUST;
 //    [self.player stop];
 }
 
