@@ -16,7 +16,6 @@
 		282BB5B118A9614C00F3A810 /* MCHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 282BB5B018A9614C00F3A810 /* MCHAppDelegate.m */; };
 		282BB5B418A9614C00F3A810 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 282BB5B218A9614C00F3A810 /* Main.storyboard */; };
 		282BB5B718A9614C00F3A810 /* MCHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 282BB5B618A9614C00F3A810 /* MCHViewController.m */; };
-		282BB5BA18A9614C00F3A810 /* MCHMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 282BB5B918A9614C00F3A810 /* MCHMenuScene.m */; };
 		282BB5BC18A9614C00F3A810 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 282BB5BB18A9614C00F3A810 /* Spaceship.png */; };
 		282BB5BE18A9614C00F3A810 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 282BB5BD18A9614C00F3A810 /* Images.xcassets */; };
 		282BB5C518A9614C00F3A810 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 282BB5C418A9614C00F3A810 /* XCTest.framework */; };
@@ -24,8 +23,11 @@
 		282BB5C718A9614C00F3A810 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 282BB5A218A9614C00F3A810 /* UIKit.framework */; };
 		282BB5CF18A9614C00F3A810 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 282BB5CD18A9614C00F3A810 /* InfoPlist.strings */; };
 		282BB5D118A9614C00F3A810 /* JetpackExplorerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 282BB5D018A9614C00F3A810 /* JetpackExplorerTests.m */; };
-		282BB5DC18A9659700F3A810 /* MCHGameplayScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 282BB5DB18A9659700F3A810 /* MCHGameplayScene.m */; };
-		282BB5DF18A9664C00F3A810 /* MCHLeaderboardScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 282BB5DE18A9664C00F3A810 /* MCHLeaderboardScene.m */; };
+		28736F5418CF92E100D88DF5 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 28736F5318CF92E100D88DF5 /* sprites.atlas */; };
+		28736F6318CF95AF00D88DF5 /* MCHGameplayScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 28736F5E18CF95AF00D88DF5 /* MCHGameplayScene.m */; };
+		28736F6418CF95AF00D88DF5 /* MCHLeaderboardScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 28736F6018CF95AF00D88DF5 /* MCHLeaderboardScene.m */; };
+		28736F6518CF95AF00D88DF5 /* MCHMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 28736F6218CF95AF00D88DF5 /* MCHMenuScene.m */; };
+		28736F6918CF961B00D88DF5 /* MCHJetpackSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 28736F6818CF961B00D88DF5 /* MCHJetpackSprite.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +55,6 @@
 		282BB5B318A9614C00F3A810 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		282BB5B518A9614C00F3A810 /* MCHViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCHViewController.h; sourceTree = "<group>"; };
 		282BB5B618A9614C00F3A810 /* MCHViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCHViewController.m; sourceTree = "<group>"; };
-		282BB5B818A9614C00F3A810 /* MCHMenuScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCHMenuScene.h; sourceTree = "<group>"; };
-		282BB5B918A9614C00F3A810 /* MCHMenuScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCHMenuScene.m; sourceTree = "<group>"; };
 		282BB5BB18A9614C00F3A810 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		282BB5BD18A9614C00F3A810 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		282BB5C318A9614C00F3A810 /* JetpackExplorerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JetpackExplorerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,10 +62,15 @@
 		282BB5CC18A9614C00F3A810 /* JetpackExplorerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JetpackExplorerTests-Info.plist"; sourceTree = "<group>"; };
 		282BB5CE18A9614C00F3A810 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		282BB5D018A9614C00F3A810 /* JetpackExplorerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JetpackExplorerTests.m; sourceTree = "<group>"; };
-		282BB5DA18A9659700F3A810 /* MCHGameplayScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCHGameplayScene.h; sourceTree = "<group>"; };
-		282BB5DB18A9659700F3A810 /* MCHGameplayScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCHGameplayScene.m; sourceTree = "<group>"; };
-		282BB5DD18A9664C00F3A810 /* MCHLeaderboardScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCHLeaderboardScene.h; sourceTree = "<group>"; };
-		282BB5DE18A9664C00F3A810 /* MCHLeaderboardScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCHLeaderboardScene.m; sourceTree = "<group>"; };
+		28736F5318CF92E100D88DF5 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
+		28736F5D18CF95AF00D88DF5 /* MCHGameplayScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCHGameplayScene.h; path = scenes/MCHGameplayScene.h; sourceTree = "<group>"; };
+		28736F5E18CF95AF00D88DF5 /* MCHGameplayScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCHGameplayScene.m; path = scenes/MCHGameplayScene.m; sourceTree = "<group>"; };
+		28736F5F18CF95AF00D88DF5 /* MCHLeaderboardScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCHLeaderboardScene.h; path = scenes/MCHLeaderboardScene.h; sourceTree = "<group>"; };
+		28736F6018CF95AF00D88DF5 /* MCHLeaderboardScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCHLeaderboardScene.m; path = scenes/MCHLeaderboardScene.m; sourceTree = "<group>"; };
+		28736F6118CF95AF00D88DF5 /* MCHMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCHMenuScene.h; path = scenes/MCHMenuScene.h; sourceTree = "<group>"; };
+		28736F6218CF95AF00D88DF5 /* MCHMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCHMenuScene.m; path = scenes/MCHMenuScene.m; sourceTree = "<group>"; };
+		28736F6718CF961B00D88DF5 /* MCHJetpackSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCHJetpackSprite.h; path = sprites/MCHJetpackSprite.h; sourceTree = "<group>"; };
+		28736F6818CF961B00D88DF5 /* MCHJetpackSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCHJetpackSprite.m; path = sprites/MCHJetpackSprite.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +101,7 @@
 		282BB59218A9614C00F3A810 = {
 			isa = PBXGroup;
 			children = (
+				28736F5318CF92E100D88DF5 /* sprites.atlas */,
 				282BB5A618A9614C00F3A810 /* JetpackExplorer */,
 				282BB5CA18A9614C00F3A810 /* JetpackExplorerTests */,
 				282BB59D18A9614C00F3A810 /* Frameworks */,
@@ -127,17 +133,13 @@
 		282BB5A618A9614C00F3A810 /* JetpackExplorer */ = {
 			isa = PBXGroup;
 			children = (
+				28736F6618CF961000D88DF5 /* sprites */,
+				28736F5C18CF959A00D88DF5 /* scenes */,
 				282BB5AF18A9614C00F3A810 /* MCHAppDelegate.h */,
 				282BB5B018A9614C00F3A810 /* MCHAppDelegate.m */,
 				282BB5B218A9614C00F3A810 /* Main.storyboard */,
 				282BB5B518A9614C00F3A810 /* MCHViewController.h */,
 				282BB5B618A9614C00F3A810 /* MCHViewController.m */,
-				282BB5B818A9614C00F3A810 /* MCHMenuScene.h */,
-				282BB5B918A9614C00F3A810 /* MCHMenuScene.m */,
-				282BB5DA18A9659700F3A810 /* MCHGameplayScene.h */,
-				282BB5DB18A9659700F3A810 /* MCHGameplayScene.m */,
-				282BB5DD18A9664C00F3A810 /* MCHLeaderboardScene.h */,
-				282BB5DE18A9664C00F3A810 /* MCHLeaderboardScene.m */,
 				282BB5BB18A9614C00F3A810 /* Spaceship.png */,
 				282BB5BD18A9614C00F3A810 /* Images.xcassets */,
 				282BB5A718A9614C00F3A810 /* Supporting Files */,
@@ -172,6 +174,28 @@
 				282BB5CD18A9614C00F3A810 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		28736F5C18CF959A00D88DF5 /* scenes */ = {
+			isa = PBXGroup;
+			children = (
+				28736F5D18CF95AF00D88DF5 /* MCHGameplayScene.h */,
+				28736F5E18CF95AF00D88DF5 /* MCHGameplayScene.m */,
+				28736F5F18CF95AF00D88DF5 /* MCHLeaderboardScene.h */,
+				28736F6018CF95AF00D88DF5 /* MCHLeaderboardScene.m */,
+				28736F6118CF95AF00D88DF5 /* MCHMenuScene.h */,
+				28736F6218CF95AF00D88DF5 /* MCHMenuScene.m */,
+			);
+			name = scenes;
+			sourceTree = "<group>";
+		};
+		28736F6618CF961000D88DF5 /* sprites */ = {
+			isa = PBXGroup;
+			children = (
+				28736F6718CF961B00D88DF5 /* MCHJetpackSprite.h */,
+				28736F6818CF961B00D88DF5 /* MCHJetpackSprite.m */,
+			);
+			name = sprites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28736F5418CF92E100D88DF5 /* sprites.atlas in Resources */,
 				282BB5AB18A9614C00F3A810 /* InfoPlist.strings in Resources */,
 				282BB5BE18A9614C00F3A810 /* Images.xcassets in Resources */,
 				282BB5BC18A9614C00F3A810 /* Spaceship.png in Resources */,
@@ -274,11 +299,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				282BB5AD18A9614C00F3A810 /* main.m in Sources */,
-				282BB5DC18A9659700F3A810 /* MCHGameplayScene.m in Sources */,
 				282BB5B118A9614C00F3A810 /* MCHAppDelegate.m in Sources */,
 				282BB5B718A9614C00F3A810 /* MCHViewController.m in Sources */,
-				282BB5BA18A9614C00F3A810 /* MCHMenuScene.m in Sources */,
-				282BB5DF18A9664C00F3A810 /* MCHLeaderboardScene.m in Sources */,
+				28736F6318CF95AF00D88DF5 /* MCHGameplayScene.m in Sources */,
+				28736F6918CF961B00D88DF5 /* MCHJetpackSprite.m in Sources */,
+				28736F6518CF95AF00D88DF5 /* MCHMenuScene.m in Sources */,
+				28736F6418CF95AF00D88DF5 /* MCHLeaderboardScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
