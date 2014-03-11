@@ -10,4 +10,17 @@
 
 @implementation MCHJetpackSprite
 
+- (void)thrustWithForce:(double)force {
+    self.physicsBody.velocity = CGVectorMake(0, 0);
+    [self.physicsBody applyImpulse:CGVectorMake(0, force)];
+}
+
+- (void)thrustContinousUp{
+    self.physicsBody.velocity = CGVectorMake(0, 5);
+}
+
+- (void)stop{
+    self.physicsBody.velocity = CGVectorMake(0, 0);
+}
+
 @end

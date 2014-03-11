@@ -71,6 +71,7 @@
 		28736F6218CF95AF00D88DF5 /* MCHMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCHMenuScene.m; path = scenes/MCHMenuScene.m; sourceTree = "<group>"; };
 		28736F6718CF961B00D88DF5 /* MCHJetpackSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCHJetpackSprite.h; path = sprites/MCHJetpackSprite.h; sourceTree = "<group>"; };
 		28736F6818CF961B00D88DF5 /* MCHJetpackSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCHJetpackSprite.m; path = sprites/MCHJetpackSprite.m; sourceTree = "<group>"; };
+		28736F6B18CFD38700D88DF5 /* MCHConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCHConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +134,7 @@
 		282BB5A618A9614C00F3A810 /* JetpackExplorer */ = {
 			isa = PBXGroup;
 			children = (
+				28736F6B18CFD38700D88DF5 /* MCHConstants.h */,
 				28736F6618CF961000D88DF5 /* sprites */,
 				28736F5C18CF959A00D88DF5 /* scenes */,
 				282BB5AF18A9614C00F3A810 /* MCHAppDelegate.h */,

@@ -13,6 +13,8 @@
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
+        
+        self.thrustForce = 2;
         /* Setup your scene here */
         
         /* give the scene a background color
@@ -27,28 +29,79 @@
          [self addChild:background];
          */
         
-        SKLabelNode *title = [SKLabelNode labelNodeWithFontNamed:@"Helvetica Neue UltraLight"];
-        title.text = @"gameplay scene - make it happen here!";
-        title.fontSize = 38;
-        title.fontColor = [UIColor whiteColor];
-        title.position = CGPointMake(CGRectGetMidX(self.frame),self.frame.size.height - title.frame.size.height * 2);
-        [self addChild:title];
+//        SKLabelNode *title = [SKLabelNode labelNodeWithFontNamed:@"Helvetica Neue UltraLight"];
+//        title.text = @"gameplay scene - make it happen here!";
+//        title.fontSize = 38;
+//        title.fontColor = [UIColor whiteColor];
+//        title.position = CGPointMake(CGRectGetMidX(self.frame),self.frame.size.height - title.frame.size.height * 2);
+//        [self addChild:title];
         
-        SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"sprites"];
+         SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"sprites"];
         SKTexture *spriteTextureA = [atlas textureNamed:@"sprite-01-a.png"];
         SKTexture *spriteTextureB = [atlas textureNamed:@"aprite-01-b.png"];
         NSArray *spriteTextureArray = @[spriteTextureA,spriteTextureB];
+        
+        self.physicsWorld.gravity = CGVectorMake(0, -1);
 
-        MCHJetpackSprite *jetpackToFall = [[MCHJetpackSprite alloc] initWithTexture:spriteTextureA color:[UIColor whiteColor] size:CGSizeMake(50, 33)];
+        self.player = [[MCHJetpackSprite alloc] initWithTexture:spriteTextureA color:[UIColor whiteColor] size:CGSizeMake(50, 33)];
 //        jetpackToFall.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-        jetpackToFall.position = CGPointMake(CGRectGetMidX(self.frame), self.frame.size.height);
-        jetpackToFall.textureArray = spriteTextureArray;
-        jetpackToFall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:jetpackToFall.size];
-        [self addChild:jetpackToFall];
+        self.player.position = CGPointMake(CGRectGetMidX(self.frame), self.frame.size.height);
+        self.player.textureArray = spriteTextureArray;
+        self.player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.player.size];
+        [self addChild:self.player];
 
         
     }
     return self;
 }
+
+- (void)didMoveToView:(SKView *)view{
+    /*
+    UITapGestureRecognizer *shortThrust = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(applyShortThrust:)];
+    shortThrust.delegate = self;
+    [[self view] addGestureRecognizer:shortThrust];
+    
+    UILongPressGestureRecognizer *longThrust = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(applyLongThrust:)];
+    longThrust.delegate = self;
+    [[self view] addGestureRecognizer:longThrust];
+     */
+}
+
+-(void)update:(CFTimeInterval)currentTime {
+    if (self.thrustOn) {
+        [self.player thrustWithForce:self.thrustForce];
+        self.thrustForce = (self.thrustForce < MAXTHRUST) ? self.thrustForce++ : MAXTHRUST;
+        self.thrustForce++;
+    }
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"touches began...");
+    self.thrustOn = YES;
+//    [self.player thrustContinousUp];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"touches ended...");
+    self.thrustOn = NO;
+    self.thrustForce = 2;
+//    [self.player stop];
+}
+
+
+-(void)applyShortThrust:(UITapGestureRecognizer *)gesture{
+    CGPoint location = [gesture locationInView:gesture.view];
+    location = [self convertPointFromView:location];
+    [self.player thrustWithForce:3];
+}
+
+
+-(void)applyLongThrust:(UITapGestureRecognizer *)gesture{
+    NSLog(@"long thrust");
+    CGPoint location = [gesture locationInView:gesture.view];
+    location = [self convertPointFromView:location];
+    [self.player thrustWithForce:6];
+}
+
 
 @end

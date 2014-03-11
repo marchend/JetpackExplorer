@@ -12,4 +12,8 @@
 
 @property (strong,atomic) NSArray *textureArray;
 
+- (void)thrustWithForce:(double)force;
+- (void)thrustContinousUp;
+- (void)stop;
+
 @end

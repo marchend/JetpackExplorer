@@ -7,8 +7,12 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+@class MCHJetpackSprite;
 
-@interface MCHGameplayScene : SKScene
+@interface MCHGameplayScene : SKScene <UIGestureRecognizerDelegate>
 
+@property (strong,atomic) MCHJetpackSprite *player;
+@property BOOL thrustOn;
+@property double thrustForce;
 
 @end
