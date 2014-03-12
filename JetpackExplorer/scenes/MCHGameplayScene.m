@@ -8,8 +8,13 @@
 
 #import "MCHGameplayScene.h"
 #import "MCHjetpackSprite.h"
+#import "FMMParallaxNode.h"
 
 @implementation MCHGameplayScene
+{
+    FMMParallaxNode *_parallaxNodeBackgrounds;
+    FMMParallaxNode *_parallaxSpaceDust;
+}
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -36,7 +41,27 @@
 //        title.position = CGPointMake(CGRectGetMidX(self.frame),self.frame.size.height - title.frame.size.height * 2);
 //        [self addChild:title];
         
-         SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"sprites"];
+        
+        NSArray *parallaxBackgroundNames = @[@"bg_galaxy.png", @"bg_planetsunrise.png",
+                                             @"bg_spacialanomaly.png", @"bg_spacialanomaly2.png"];
+        CGSize planetSizes = CGSizeMake(200.0, 200.0);
+        _parallaxNodeBackgrounds = [[FMMParallaxNode alloc] initWithBackgrounds:parallaxBackgroundNames
+                                                                           size:planetSizes
+                                                           pointsPerSecondSpeed:10.0];
+        _parallaxNodeBackgrounds.position = CGPointMake(size.width/2.0, size.height/2.0);
+        [_parallaxNodeBackgrounds randomizeNodesPositions];
+        [self addChild:_parallaxNodeBackgrounds];
+
+        NSArray *parallaxBackground2Names = @[@"bg_front_spacedust.png",@"bg_front_spacedust.png"];
+        _parallaxSpaceDust = [[FMMParallaxNode alloc] initWithBackgrounds:parallaxBackground2Names
+                                                                     size:size
+                                                     pointsPerSecondSpeed:25.0];
+        _parallaxSpaceDust.position = CGPointMake(0, 0);
+        [self addChild:_parallaxSpaceDust];
+        
+        
+        
+        SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"sprites"];
         SKTexture *spriteTextureA = [atlas textureNamed:@"sprite-01-a.png"];
         SKTexture *spriteTextureB = [atlas textureNamed:@"aprite-01-b.png"];
         NSArray *spriteTextureArray = @[spriteTextureA,spriteTextureB];
@@ -68,6 +93,8 @@
 }
 
 -(void)update:(CFTimeInterval)currentTime {
+    [_parallaxNodeBackgrounds update:currentTime];    //other additional game background
+    [_parallaxSpaceDust update:currentTime];
     if (self.thrustOn) {
         [self.player thrustWithForce:self.thrustForce];
         self.thrustForce = (self.thrustForce < MAXTHRUST) ? self.thrustForce + THRUSTACCELERATION : MAXTHRUST;

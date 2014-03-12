@@ -28,6 +28,12 @@
 		28736F6418CF95AF00D88DF5 /* MCHLeaderboardScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 28736F6018CF95AF00D88DF5 /* MCHLeaderboardScene.m */; };
 		28736F6518CF95AF00D88DF5 /* MCHMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 28736F6218CF95AF00D88DF5 /* MCHMenuScene.m */; };
 		28736F6918CF961B00D88DF5 /* MCHJetpackSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 28736F6818CF961B00D88DF5 /* MCHJetpackSprite.m */; };
+		28736F7018CFEEFC00D88DF5 /* FMMParallaxNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 28736F6F18CFEEFC00D88DF5 /* FMMParallaxNode.m */; };
+		28736F7818CFF03600D88DF5 /* bg_front_spacedust.png in Resources */ = {isa = PBXBuildFile; fileRef = 28736F7318CFF03600D88DF5 /* bg_front_spacedust.png */; };
+		28736F7918CFF03600D88DF5 /* bg_galaxy.png in Resources */ = {isa = PBXBuildFile; fileRef = 28736F7418CFF03600D88DF5 /* bg_galaxy.png */; };
+		28736F7A18CFF03600D88DF5 /* bg_planetsunrise.png in Resources */ = {isa = PBXBuildFile; fileRef = 28736F7518CFF03600D88DF5 /* bg_planetsunrise.png */; };
+		28736F7B18CFF03600D88DF5 /* bg_spacialanomaly.png in Resources */ = {isa = PBXBuildFile; fileRef = 28736F7618CFF03600D88DF5 /* bg_spacialanomaly.png */; };
+		28736F7C18CFF03600D88DF5 /* bg_spacialanomaly2.png in Resources */ = {isa = PBXBuildFile; fileRef = 28736F7718CFF03600D88DF5 /* bg_spacialanomaly2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +78,13 @@
 		28736F6718CF961B00D88DF5 /* MCHJetpackSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCHJetpackSprite.h; path = sprites/MCHJetpackSprite.h; sourceTree = "<group>"; };
 		28736F6818CF961B00D88DF5 /* MCHJetpackSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCHJetpackSprite.m; path = sprites/MCHJetpackSprite.m; sourceTree = "<group>"; };
 		28736F6B18CFD38700D88DF5 /* MCHConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCHConstants.h; sourceTree = "<group>"; };
+		28736F6E18CFEEFC00D88DF5 /* FMMParallaxNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMMParallaxNode.h; path = utilities/FMMParallaxNode.h; sourceTree = "<group>"; };
+		28736F6F18CFEEFC00D88DF5 /* FMMParallaxNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMMParallaxNode.m; path = utilities/FMMParallaxNode.m; sourceTree = "<group>"; };
+		28736F7318CFF03600D88DF5 /* bg_front_spacedust.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_front_spacedust.png; sourceTree = "<group>"; };
+		28736F7418CFF03600D88DF5 /* bg_galaxy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_galaxy.png; sourceTree = "<group>"; };
+		28736F7518CFF03600D88DF5 /* bg_planetsunrise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_planetsunrise.png; sourceTree = "<group>"; };
+		28736F7618CFF03600D88DF5 /* bg_spacialanomaly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_spacialanomaly.png; sourceTree = "<group>"; };
+		28736F7718CFF03600D88DF5 /* bg_spacialanomaly2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_spacialanomaly2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +147,8 @@
 		282BB5A618A9614C00F3A810 /* JetpackExplorer */ = {
 			isa = PBXGroup;
 			children = (
+				28736F7118CFF00100D88DF5 /* resources */,
+				28736F6D18CFEEAD00D88DF5 /* utilities */,
 				28736F6B18CFD38700D88DF5 /* MCHConstants.h */,
 				28736F6618CF961000D88DF5 /* sprites */,
 				28736F5C18CF959A00D88DF5 /* scenes */,
@@ -198,6 +213,35 @@
 				28736F6818CF961B00D88DF5 /* MCHJetpackSprite.m */,
 			);
 			name = sprites;
+			sourceTree = "<group>";
+		};
+		28736F6D18CFEEAD00D88DF5 /* utilities */ = {
+			isa = PBXGroup;
+			children = (
+				28736F6E18CFEEFC00D88DF5 /* FMMParallaxNode.h */,
+				28736F6F18CFEEFC00D88DF5 /* FMMParallaxNode.m */,
+			);
+			name = utilities;
+			sourceTree = "<group>";
+		};
+		28736F7118CFF00100D88DF5 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				28736F7218CFF03600D88DF5 /* Backgrounds */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		28736F7218CFF03600D88DF5 /* Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				28736F7318CFF03600D88DF5 /* bg_front_spacedust.png */,
+				28736F7418CFF03600D88DF5 /* bg_galaxy.png */,
+				28736F7518CFF03600D88DF5 /* bg_planetsunrise.png */,
+				28736F7618CFF03600D88DF5 /* bg_spacialanomaly.png */,
+				28736F7718CFF03600D88DF5 /* bg_spacialanomaly2.png */,
+			);
+			path = Backgrounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,7 +323,12 @@
 			files = (
 				28736F5418CF92E100D88DF5 /* sprites.atlas in Resources */,
 				282BB5AB18A9614C00F3A810 /* InfoPlist.strings in Resources */,
+				28736F7918CFF03600D88DF5 /* bg_galaxy.png in Resources */,
+				28736F7B18CFF03600D88DF5 /* bg_spacialanomaly.png in Resources */,
 				282BB5BE18A9614C00F3A810 /* Images.xcassets in Resources */,
+				28736F7C18CFF03600D88DF5 /* bg_spacialanomaly2.png in Resources */,
+				28736F7A18CFF03600D88DF5 /* bg_planetsunrise.png in Resources */,
+				28736F7818CFF03600D88DF5 /* bg_front_spacedust.png in Resources */,
 				282BB5BC18A9614C00F3A810 /* Spaceship.png in Resources */,
 				282BB5B418A9614C00F3A810 /* Main.storyboard in Resources */,
 			);
@@ -307,6 +356,7 @@
 				28736F6918CF961B00D88DF5 /* MCHJetpackSprite.m in Sources */,
 				28736F6518CF95AF00D88DF5 /* MCHMenuScene.m in Sources */,
 				28736F6418CF95AF00D88DF5 /* MCHLeaderboardScene.m in Sources */,
+				28736F7018CFEEFC00D88DF5 /* FMMParallaxNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
