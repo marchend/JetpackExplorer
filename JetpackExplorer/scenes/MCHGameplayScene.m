@@ -62,13 +62,12 @@
         
         
         SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"sprites"];
-        SKTexture *spriteTextureA = [atlas textureNamed:@"sprite-01-a.png"];
-        SKTexture *spriteTextureB = [atlas textureNamed:@"aprite-01-b.png"];
-        NSArray *spriteTextureArray = @[spriteTextureA,spriteTextureB];
+        SKTexture *playerSprite = [atlas textureNamed:@"player.png"];
+        NSArray *spriteTextureArray = @[playerSprite];
         
         self.physicsWorld.gravity = CGVectorMake(0, -1);
 
-        self.player = [[MCHJetpackSprite alloc] initWithTexture:spriteTextureA color:[UIColor whiteColor] size:CGSizeMake(50, 33)];
+        self.player = [[MCHJetpackSprite alloc] initWithTexture:playerSprite color:[UIColor whiteColor] size:CGSizeMake(31, 60)];
 //        jetpackToFall.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         self.player.position = CGPointMake(CGRectGetMidX(self.frame), self.frame.size.height);
         self.player.textureArray = spriteTextureArray;
