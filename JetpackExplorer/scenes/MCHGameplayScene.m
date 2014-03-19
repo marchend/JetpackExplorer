@@ -70,14 +70,14 @@
         SKTexture *playerSprite = [atlas textureNamed:@"player.png"];
         NSArray *spriteTextureArray = @[playerSprite];
         
-        self.physicsWorld.gravity = CGVectorMake(0, -1);
+        self.physicsWorld.gravity = CGVectorMake(0, GRAVITY);
 
         self.player = [[MCHJetpackSprite alloc] initWithTexture:playerSprite color:[UIColor whiteColor] size:CGSizeMake(21, 40)];
 //        jetpackToFall.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-        self.player.position = CGPointMake(CGRectGetMidX(self.frame), self.frame.size.height);
+        self.player.position = CGPointMake(CGRectGetMidX(self.frame)-75, self.frame.size.height);
         self.player.textureArray = spriteTextureArray;
         self.player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.player.size];
-        [self addChild:self.player];
+        [self.map addChild:self.player];
 
         
     }
@@ -97,11 +97,47 @@
 }
 
 -(void)update:(CFTimeInterval)currentTime {
+    [self checkForAndResolveCollisionsForPlayer:self.player forLayer:self.walls];
+
+    
     [_parallaxNodeBackgrounds update:currentTime];    //other additional game background
     [_parallaxSpaceDust update:currentTime];
     if (self.thrustOn) {
         [self.player thrustWithForce:self.thrustForce];
         self.thrustForce = (self.thrustForce < MAXTHRUST) ? self.thrustForce + THRUSTACCELERATION : MAXTHRUST;
+    }
+}
+
+- (NSInteger)tileGIDAtTileCoord:(CGPoint)coord forLayer:(TMXLayer *)layer
+{
+    TMXLayerInfo *layerInfo = layer.layerInfo;
+    return [layerInfo tileGidAtCoord:coord];
+}
+
+- (void)checkForAndResolveCollisionsForPlayer:(MCHJetpackSprite *)player forLayer:(TMXLayer *)layer
+{
+    NSInteger indices[8] = {7, 1, 3, 5, 0, 2, 6, 8};
+//    player.onGround = NO;  ////Here
+    for (NSUInteger i = 0; i < 8; i++) {
+        NSInteger tileIndex = indices[i];
+        
+//        CGRect playerRect = [player collisionBoundingBox];
+        CGPoint playerCoord = [layer coordForPoint:player.position];
+        
+        if (playerCoord.y >= self.map.mapSize.height - 1) {
+//            [self gameOver:0];
+            return;
+        }
+        
+        NSInteger tileColumn = tileIndex % 3;
+        NSInteger tileRow = tileIndex / 3;
+        CGPoint tileCoord = CGPointMake(playerCoord.x + (tileColumn - 1), playerCoord.y + (tileRow - 1));
+        
+        NSInteger gid = [self tileGIDAtTileCoord:tileCoord forLayer:layer];
+        if (gid != 0) {
+            NSLog(@"player hit a wall");
+            [self.player thrustWithForce:-(GRAVITY)];
+        }
     }
 }
 

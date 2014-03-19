@@ -15,5 +15,8 @@
 #define MAXTHRUST 20
 #define THRUSTACCELERATION 0.3
 
+#pragma mark - World Constants
+
+#define GRAVITY -1
 
 #endif
