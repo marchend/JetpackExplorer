@@ -187,7 +187,7 @@
                 }
             }else{
                 if(((self.player.position.x + self.player.size.width/2) + trans.x) > self.size.width){
-                    applyMove = NO;
+//                    applyMove = NO;
                 }
             }
             if (applyMove) {
@@ -200,13 +200,15 @@
     } else if (gesture.state == UIGestureRecognizerStateEnded) {
         NSLog(@"ending pan");
         self.movePlayer = NO;
+        self.thrustOn = NO;
+        self.thrustForce = INITIALTHRUST;
     }
     
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     NSLog(@"touches began...");
-//    self.thrustOn = YES;
+    self.thrustOn = YES;
 //    [self.player thrustContinousUp];
 }
 

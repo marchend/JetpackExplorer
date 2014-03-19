@@ -12,7 +12,7 @@
 #pragma mark - Thrust Constants
 
 #define INITIALTHRUST 0.5
-#define MAXTHRUST 20
+#define MAXTHRUST 4
 #define THRUSTACCELERATION 0.3
 
 #pragma mark - World Constants
