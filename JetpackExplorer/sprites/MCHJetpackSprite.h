@@ -11,10 +11,13 @@
 @interface MCHJetpackSprite : SKSpriteNode
 
 @property (strong,atomic) NSArray *textureArray;
+@property (nonatomic, assign) CGPoint desiredPosition;
+@property (nonatomic, assign) CGPoint velocity;
 
 - (void)thrustWithForce:(double)force;
 - (void)thrustAtVelocity:(double)velocity;
 - (void)thrustContinousUp;
 - (void)stop;
+- (void)moveToPointX:(CGPoint)point;
 
 @end

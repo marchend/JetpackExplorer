@@ -13,6 +13,7 @@
 
 @property (strong,atomic) MCHJetpackSprite *player;
 @property BOOL thrustOn;
+@property BOOL movePlayer;
 @property double thrustForce;
 @property (nonatomic, strong) JSTileMap *map;
 @property (nonatomic, strong) TMXLayer *walls;

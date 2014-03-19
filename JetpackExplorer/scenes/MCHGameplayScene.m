@@ -85,6 +85,10 @@
 }
 
 - (void)didMoveToView:(SKView *)view{
+    UIPanGestureRecognizer *playerControlGesture = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragPlayer:)];
+    playerControlGesture.minimumNumberOfTouches = 1;
+    playerControlGesture.delegate = self;
+    [[self view] addGestureRecognizer:playerControlGesture];
     /*
     UITapGestureRecognizer *shortThrust = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(applyShortThrust:)];
     shortThrust.delegate = self;
@@ -106,6 +110,7 @@
         [self.player thrustWithForce:self.thrustForce];
         self.thrustForce = (self.thrustForce < MAXTHRUST) ? self.thrustForce + THRUSTACCELERATION : MAXTHRUST;
     }
+    [self setViewpointCenter:self.player.position];
 }
 
 - (void)addPhysicsBodiesToTilesInLayer:(TMXLayer *)layer{
@@ -162,9 +167,46 @@
     }
 }
 
+-(void)dragPlayer:(UIPanGestureRecognizer *)gesture{
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"detecting pan");
+        CGPoint touchLocation = [gesture locationInView:gesture.view];
+        touchLocation = [self convertPointFromView:touchLocation];
+        if (touchLocation.y < self.player.position.y + 40) {
+            self.movePlayer = YES;
+        }
+    } else if (gesture.state == UIGestureRecognizerStateChanged) {
+        NSLog(@"in pan");
+        if(self.movePlayer){
+            NSLog(@"and moving player");
+            CGPoint trans = [gesture translationInView:self.view];
+            BOOL applyMove = YES;
+            if (trans.x < 0) {
+                if(((self.player.position.x - self.player.size.width/2) + trans.x) < 0){
+                    applyMove = NO;
+                }
+            }else{
+                if(((self.player.position.x + self.player.size.width/2) + trans.x) > self.size.width){
+                    applyMove = NO;
+                }
+            }
+            if (applyMove) {
+                SKAction *movePlayer =  [SKAction moveByX:trans.x y:0  duration:0];
+                [self.player runAction:movePlayer];
+//                [self.playerControl runAction:movePlayer];
+            }
+        }
+        [gesture setTranslation:CGPointMake(0, 0) inView:self.view];
+    } else if (gesture.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"ending pan");
+        self.movePlayer = NO;
+    }
+    
+}
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     NSLog(@"touches began...");
-    self.thrustOn = YES;
+//    self.thrustOn = YES;
 //    [self.player thrustContinousUp];
 }
 
@@ -174,7 +216,23 @@
     self.thrustForce = INITIALTHRUST;
 //    [self.player stop];
 }
+/**
+ * Subtracts point2 from point1 and returns the result as a new CGPoint.
+ */
+CGPoint CGPointSubtract(CGPoint point1, CGPoint point2) {
+    return CGPointMake(point1.x - point2.x, point1.y - point2.y);
+}
 
+- (void)setViewpointCenter:(CGPoint)position {
+    NSInteger x = MAX(position.x, self.size.width / 2);
+    NSInteger y = MAX(position.y, self.size.height / 2);
+    x = MIN(x, (self.map.mapSize.width * self.map.tileSize.width) - self.size.width / 2);
+    y = MIN(y, (self.map.mapSize.height * self.map.tileSize.height) - self.size.height / 2);
+    CGPoint actualPosition = CGPointMake(x, y);
+    CGPoint centerOfView = CGPointMake(self.size.width/2, self.size.height/2);
+    CGPoint viewPoint = CGPointSubtract(centerOfView, actualPosition);
+    self.map.position = viewPoint;
+}
 
 -(void)applyShortThrust:(UITapGestureRecognizer *)gesture{
     CGPoint location = [gesture locationInView:gesture.view];
