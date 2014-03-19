@@ -34,6 +34,15 @@
 		28736F7A18CFF03600D88DF5 /* bg_planetsunrise.png in Resources */ = {isa = PBXBuildFile; fileRef = 28736F7518CFF03600D88DF5 /* bg_planetsunrise.png */; };
 		28736F7B18CFF03600D88DF5 /* bg_spacialanomaly.png in Resources */ = {isa = PBXBuildFile; fileRef = 28736F7618CFF03600D88DF5 /* bg_spacialanomaly.png */; };
 		28736F7C18CFF03600D88DF5 /* bg_spacialanomaly2.png in Resources */ = {isa = PBXBuildFile; fileRef = 28736F7718CFF03600D88DF5 /* bg_spacialanomaly2.png */; };
+		28736F7E18D3905D00D88DF5 /* clouds1-sized.png in Resources */ = {isa = PBXBuildFile; fileRef = 28736F7D18D3905D00D88DF5 /* clouds1-sized.png */; };
+		28736F9718D920F300D88DF5 /* level1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 28736F9418D920F300D88DF5 /* level1.tmx */; };
+		28736F9818D920F300D88DF5 /* tileSet.png in Resources */ = {isa = PBXBuildFile; fileRef = 28736F9518D920F300D88DF5 /* tileSet.png */; };
+		28736F9918D920F300D88DF5 /* tileSet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28736F9618D920F300D88DF5 /* tileSet@2x.png */; };
+		28736F9F18D9224B00D88DF5 /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 28736F9C18D9224B00D88DF5 /* JSTileMap.m */; };
+		28736FA018D9224B00D88DF5 /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 28736F9C18D9224B00D88DF5 /* JSTileMap.m */; };
+		28736FA118D9224B00D88DF5 /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 28736F9E18D9224B00D88DF5 /* LFCGzipUtility.m */; };
+		28736FA218D9224B00D88DF5 /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 28736F9E18D9224B00D88DF5 /* LFCGzipUtility.m */; };
+		28736FA418D9236600D88DF5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 28736FA318D9236600D88DF5 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +94,15 @@
 		28736F7518CFF03600D88DF5 /* bg_planetsunrise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_planetsunrise.png; sourceTree = "<group>"; };
 		28736F7618CFF03600D88DF5 /* bg_spacialanomaly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_spacialanomaly.png; sourceTree = "<group>"; };
 		28736F7718CFF03600D88DF5 /* bg_spacialanomaly2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_spacialanomaly2.png; sourceTree = "<group>"; };
+		28736F7D18D3905D00D88DF5 /* clouds1-sized.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clouds1-sized.png"; sourceTree = "<group>"; };
+		28736F9418D920F300D88DF5 /* level1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = level1.tmx; sourceTree = "<group>"; };
+		28736F9518D920F300D88DF5 /* tileSet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tileSet.png; sourceTree = "<group>"; };
+		28736F9618D920F300D88DF5 /* tileSet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tileSet@2x.png"; sourceTree = "<group>"; };
+		28736F9B18D9224B00D88DF5 /* JSTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTileMap.h; sourceTree = "<group>"; };
+		28736F9C18D9224B00D88DF5 /* JSTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTileMap.m; sourceTree = "<group>"; };
+		28736F9D18D9224B00D88DF5 /* LFCGzipUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCGzipUtility.h; sourceTree = "<group>"; };
+		28736F9E18D9224B00D88DF5 /* LFCGzipUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFCGzipUtility.m; sourceTree = "<group>"; };
+		28736FA318D9236600D88DF5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28736FA418D9236600D88DF5 /* libz.dylib in Frameworks */,
 				282BB5A118A9614C00F3A810 /* CoreGraphics.framework in Frameworks */,
 				282BB5A318A9614C00F3A810 /* UIKit.framework in Frameworks */,
 				282BB5A518A9614C00F3A810 /* SpriteKit.framework in Frameworks */,
@@ -135,6 +154,7 @@
 		282BB59D18A9614C00F3A810 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				28736FA318D9236600D88DF5 /* libz.dylib */,
 				282BB59E18A9614C00F3A810 /* Foundation.framework */,
 				282BB5A018A9614C00F3A810 /* CoreGraphics.framework */,
 				282BB5A218A9614C00F3A810 /* UIKit.framework */,
@@ -147,6 +167,7 @@
 		282BB5A618A9614C00F3A810 /* JetpackExplorer */ = {
 			isa = PBXGroup;
 			children = (
+				28736F9A18D9224B00D88DF5 /* JSTileMap */,
 				28736F7118CFF00100D88DF5 /* resources */,
 				28736F6D18CFEEAD00D88DF5 /* utilities */,
 				28736F6B18CFD38700D88DF5 /* MCHConstants.h */,
@@ -227,6 +248,7 @@
 		28736F7118CFF00100D88DF5 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				28736F9318D920F300D88DF5 /* TMXFiles */,
 				28736F7218CFF03600D88DF5 /* Backgrounds */,
 			);
 			path = resources;
@@ -235,6 +257,7 @@
 		28736F7218CFF03600D88DF5 /* Backgrounds */ = {
 			isa = PBXGroup;
 			children = (
+				28736F7D18D3905D00D88DF5 /* clouds1-sized.png */,
 				28736F7318CFF03600D88DF5 /* bg_front_spacedust.png */,
 				28736F7418CFF03600D88DF5 /* bg_galaxy.png */,
 				28736F7518CFF03600D88DF5 /* bg_planetsunrise.png */,
@@ -242,6 +265,27 @@
 				28736F7718CFF03600D88DF5 /* bg_spacialanomaly2.png */,
 			);
 			path = Backgrounds;
+			sourceTree = "<group>";
+		};
+		28736F9318D920F300D88DF5 /* TMXFiles */ = {
+			isa = PBXGroup;
+			children = (
+				28736F9418D920F300D88DF5 /* level1.tmx */,
+				28736F9518D920F300D88DF5 /* tileSet.png */,
+				28736F9618D920F300D88DF5 /* tileSet@2x.png */,
+			);
+			path = TMXFiles;
+			sourceTree = "<group>";
+		};
+		28736F9A18D9224B00D88DF5 /* JSTileMap */ = {
+			isa = PBXGroup;
+			children = (
+				28736F9B18D9224B00D88DF5 /* JSTileMap.h */,
+				28736F9C18D9224B00D88DF5 /* JSTileMap.m */,
+				28736F9D18D9224B00D88DF5 /* LFCGzipUtility.h */,
+				28736F9E18D9224B00D88DF5 /* LFCGzipUtility.m */,
+			);
+			path = JSTileMap;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,9 +367,13 @@
 			files = (
 				28736F5418CF92E100D88DF5 /* sprites.atlas in Resources */,
 				282BB5AB18A9614C00F3A810 /* InfoPlist.strings in Resources */,
+				28736F9818D920F300D88DF5 /* tileSet.png in Resources */,
+				28736F7E18D3905D00D88DF5 /* clouds1-sized.png in Resources */,
 				28736F7918CFF03600D88DF5 /* bg_galaxy.png in Resources */,
+				28736F9918D920F300D88DF5 /* tileSet@2x.png in Resources */,
 				28736F7B18CFF03600D88DF5 /* bg_spacialanomaly.png in Resources */,
 				282BB5BE18A9614C00F3A810 /* Images.xcassets in Resources */,
+				28736F9718D920F300D88DF5 /* level1.tmx in Resources */,
 				28736F7C18CFF03600D88DF5 /* bg_spacialanomaly2.png in Resources */,
 				28736F7A18CFF03600D88DF5 /* bg_planetsunrise.png in Resources */,
 				28736F7818CFF03600D88DF5 /* bg_front_spacedust.png in Resources */,
@@ -352,8 +400,10 @@
 				282BB5AD18A9614C00F3A810 /* main.m in Sources */,
 				282BB5B118A9614C00F3A810 /* MCHAppDelegate.m in Sources */,
 				282BB5B718A9614C00F3A810 /* MCHViewController.m in Sources */,
+				28736F9F18D9224B00D88DF5 /* JSTileMap.m in Sources */,
 				28736F6318CF95AF00D88DF5 /* MCHGameplayScene.m in Sources */,
 				28736F6918CF961B00D88DF5 /* MCHJetpackSprite.m in Sources */,
+				28736FA118D9224B00D88DF5 /* LFCGzipUtility.m in Sources */,
 				28736F6518CF95AF00D88DF5 /* MCHMenuScene.m in Sources */,
 				28736F6418CF95AF00D88DF5 /* MCHLeaderboardScene.m in Sources */,
 				28736F7018CFEEFC00D88DF5 /* FMMParallaxNode.m in Sources */,
@@ -365,6 +415,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				282BB5D118A9614C00F3A810 /* JetpackExplorerTests.m in Sources */,
+				28736FA218D9224B00D88DF5 /* LFCGzipUtility.m in Sources */,
+				28736FA018D9224B00D88DF5 /* JSTileMap.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

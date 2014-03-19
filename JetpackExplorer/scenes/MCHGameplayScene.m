@@ -9,6 +9,7 @@
 #import "MCHGameplayScene.h"
 #import "MCHjetpackSprite.h"
 #import "FMMParallaxNode.h"
+#import "JSTileMap.h"
 
 @implementation MCHGameplayScene
 {
@@ -26,6 +27,11 @@
          self.backgroundColor = [SKColor colorWithRed:83.0/255 green:135.0/255 blue:170.0/255 alpha:1.0];
          */
         self.backgroundColor = [SKColor colorWithRed:83.0/255 green:135.0/255 blue:170.0/255 alpha:1.0];
+
+        self.map = [JSTileMap mapNamed:@"level1.tmx"];
+        [self addChild:self.map];
+        self.walls = [self.map layerNamed:@"walls"];
+        self.hazards = [self.map layerNamed:@"hazards"];
         
         /* give the scene a background image
          SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"scene-background"];
@@ -42,9 +48,8 @@
 //        [self addChild:title];
         
         
-        NSArray *parallaxBackgroundNames = @[@"bg_galaxy.png", @"bg_planetsunrise.png",
-                                             @"bg_spacialanomaly.png", @"bg_spacialanomaly2.png"];
-        CGSize planetSizes = CGSizeMake(200.0, 200.0);
+        NSArray *parallaxBackgroundNames = @[@"clouds1-sized.png"];
+        CGSize planetSizes = CGSizeMake(257.0, 100.0);
         _parallaxNodeBackgrounds = [[FMMParallaxNode alloc] initWithBackgrounds:parallaxBackgroundNames
                                                                            size:planetSizes
                                                            pointsPerSecondSpeed:10.0];
@@ -67,7 +72,7 @@
         
         self.physicsWorld.gravity = CGVectorMake(0, -1);
 
-        self.player = [[MCHJetpackSprite alloc] initWithTexture:playerSprite color:[UIColor whiteColor] size:CGSizeMake(31, 60)];
+        self.player = [[MCHJetpackSprite alloc] initWithTexture:playerSprite color:[UIColor whiteColor] size:CGSizeMake(21, 40)];
 //        jetpackToFall.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         self.player.position = CGPointMake(CGRectGetMidX(self.frame), self.frame.size.height);
         self.player.textureArray = spriteTextureArray;

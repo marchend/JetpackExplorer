@@ -47,8 +47,6 @@
 
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
-        /* Setup your scene here */
-        
         /* give the scene a background color
         self.backgroundColor = [SKColor colorWithRed:83.0/255 green:135.0/255 blue:170.0/255 alpha:1.0];
          */
@@ -98,11 +96,11 @@
     CGPoint location = [touch locationInNode:self];
     SKNode *node = [self nodeAtPoint:location];
     if([node isEqual:self.playButton]){
-        SKScene *gameScene = [[MCHGameplayScene alloc] initWithSize:self.size];
+        SKScene *gameScene = [[MCHGameplayScene alloc] initWithSize:CGSizeMake(self.size.height, self.size.width)];
         SKTransition *doors = [SKTransition doorsOpenHorizontalWithDuration:0.5];
         [self.view presentScene:gameScene transition:doors];
     }else if([node isEqual:self.leaderboardButton]){
-        SKScene *leaderboardScene = [[MCHLeaderboardScene alloc] initWithSize:self.size];
+        SKScene *leaderboardScene = [[MCHLeaderboardScene alloc] initWithSize:CGSizeMake(self.size.height, self.size.width)];
         SKTransition *doors = [SKTransition doorsOpenHorizontalWithDuration:0.5];
         [self.view presentScene:leaderboardScene transition:doors];
     }
