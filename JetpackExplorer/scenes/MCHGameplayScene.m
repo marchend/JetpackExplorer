@@ -40,30 +40,6 @@
          [self addChild:background];
          */
         
-//        SKLabelNode *title = [SKLabelNode labelNodeWithFontNamed:@"Helvetica Neue UltraLight"];
-//        title.text = @"gameplay scene - make it happen here!";
-//        title.fontSize = 38;
-//        title.fontColor = [UIColor whiteColor];
-//        title.position = CGPointMake(CGRectGetMidX(self.frame),self.frame.size.height - title.frame.size.height * 2);
-//        [self addChild:title];
-        
-        
-        NSArray *parallaxBackgroundNames = @[@"clouds1-sized.png"];
-        CGSize planetSizes = CGSizeMake(257.0, 100.0);
-        _parallaxNodeBackgrounds = [[FMMParallaxNode alloc] initWithBackgrounds:parallaxBackgroundNames
-                                                                           size:planetSizes
-                                                           pointsPerSecondSpeed:10.0];
-        _parallaxNodeBackgrounds.position = CGPointMake(size.width/2.0, size.height/2.0);
-        [_parallaxNodeBackgrounds randomizeNodesPositions];
-        [self addChild:_parallaxNodeBackgrounds];
-
-        NSArray *parallaxBackground2Names = @[@"bg_front_spacedust.png",@"bg_front_spacedust.png"];
-        _parallaxSpaceDust = [[FMMParallaxNode alloc] initWithBackgrounds:parallaxBackground2Names
-                                                                     size:size
-                                                     pointsPerSecondSpeed:25.0];
-        _parallaxSpaceDust.position = CGPointMake(0, 0);
-        [self addChild:_parallaxSpaceDust];
-        
         [self addPhysicsBodiesToTilesInLayer:self.walls];
         
         SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"sprites"];
