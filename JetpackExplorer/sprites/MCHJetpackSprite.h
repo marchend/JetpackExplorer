@@ -13,6 +13,7 @@
 @property (strong,atomic) NSArray *textureArray;
 
 - (void)thrustWithForce:(double)force;
+- (void)thrustAtVelocity:(double)velocity;
 - (void)thrustContinousUp;
 - (void)stop;
 

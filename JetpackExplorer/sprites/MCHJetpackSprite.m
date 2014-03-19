@@ -15,6 +15,10 @@
     [self.physicsBody applyImpulse:CGVectorMake(0, force)];
 }
 
+- (void)thrustAtVelocity:(double)velocity{
+    self.physicsBody.velocity = CGVectorMake(0, velocity);
+}
+
 - (void)thrustContinousUp{
     self.physicsBody.velocity = CGVectorMake(0, 5);
 }

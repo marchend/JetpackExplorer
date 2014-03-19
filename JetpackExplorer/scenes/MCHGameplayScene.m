@@ -74,7 +74,7 @@
 
         self.player = [[MCHJetpackSprite alloc] initWithTexture:playerSprite color:[UIColor whiteColor] size:CGSizeMake(21, 40)];
 //        jetpackToFall.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-        self.player.position = CGPointMake(CGRectGetMidX(self.frame)-75, self.frame.size.height);
+        self.player.position = CGPointMake(CGRectGetMidX(self.frame)-75, self.frame.size.height-60);
         self.player.textureArray = spriteTextureArray;
         self.player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.player.size];
         [self.map addChild:self.player];
@@ -136,7 +136,8 @@
         NSInteger gid = [self tileGIDAtTileCoord:tileCoord forLayer:layer];
         if (gid != 0) {
             NSLog(@"player hit a wall");
-            [self.player thrustWithForce:-(GRAVITY)];
+//            [self.player thrustWithForce:-(GRAVITY)];
+            [self.player thrustAtVelocity:-(GRAVITY)*3];
         }
     }
 }
