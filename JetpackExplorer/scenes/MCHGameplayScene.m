@@ -64,7 +64,7 @@
         _parallaxSpaceDust.position = CGPointMake(0, 0);
         [self addChild:_parallaxSpaceDust];
         
-        
+        [self addPhysicsBodiesToTilesInLayer:self.walls];
         
         SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"sprites"];
         SKTexture *playerSprite = [atlas textureNamed:@"player.png"];
@@ -97,7 +97,7 @@
 }
 
 -(void)update:(CFTimeInterval)currentTime {
-    [self checkForAndResolveCollisionsForPlayer:self.player forLayer:self.walls];
+    //[self checkForAndResolveCollisionsForPlayer:self.player forLayer:self.walls];
 
     
     [_parallaxNodeBackgrounds update:currentTime];    //other additional game background
@@ -105,6 +105,26 @@
     if (self.thrustOn) {
         [self.player thrustWithForce:self.thrustForce];
         self.thrustForce = (self.thrustForce < MAXTHRUST) ? self.thrustForce + THRUSTACCELERATION : MAXTHRUST;
+    }
+}
+
+- (void)addPhysicsBodiesToTilesInLayer:(TMXLayer *)layer{
+    int gridWidth = 212;
+    int gridHeight = 20;
+    //TODO: update the gridWidth and gridHeight to come from the tilemap itself - I can always add it as a property.
+    
+    for (int w = 0 ; w < gridWidth; ++w) {
+        for(int h = 0; h < gridHeight; ++h) {
+            CGPoint coord = CGPointMake(w, h);
+            NSInteger tileGid = [layer.layerInfo tileGidAtCoord:coord];
+            if(tileGid){
+                NSLog(@"found a gid with a tile at coord:x:%f:y:%f",coord.x,coord.y);
+                SKSpriteNode *tileNode = [layer tileAtCoord:coord];
+                tileNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:tileNode.size];
+                tileNode.physicsBody.affectedByGravity = NO;
+                tileNode.physicsBody.dynamic = NO;
+            }
+        }
     }
 }
 
