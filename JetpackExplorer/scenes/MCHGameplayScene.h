@@ -12,11 +12,18 @@
 @interface MCHGameplayScene : SKScene <UIGestureRecognizerDelegate>
 
 @property (strong,atomic) MCHJetpackSprite *player;
-@property BOOL thrustOn;
+@property BOOL upOn;
+@property BOOL forwardOn;
+@property BOOL backwardOn;
 @property BOOL movePlayer;
-@property double thrustForce;
+@property double upForce;
+@property double forwardForce;
+@property double backwardForce;
 @property (nonatomic, strong) JSTileMap *map;
 @property (nonatomic, strong) TMXLayer *walls;
 @property (nonatomic, strong) TMXLayer *hazards;
+@property (strong,atomic)SKSpriteNode *forwardButton;
+@property (strong,atomic)SKSpriteNode *backButton;
+@property (strong,atomic)SKSpriteNode *upButton;
 
 @end

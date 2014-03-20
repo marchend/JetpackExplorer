@@ -20,7 +20,7 @@
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         
-        self.thrustForce = INITIALTHRUST;
+        self.upForce = INITIALTHRUST;
         /* Setup your scene here */
         
         /* give the scene a background color
@@ -41,6 +41,16 @@
          */
         
         [self addPhysicsBodiesToTilesInLayer:self.walls];
+
+        CGSize buttonSize = CGSizeMake(40, 40);
+        self.backButton = [self createButtonWithSize:buttonSize atPosition:CGPointMake(CGRectGetMidX(self.frame)-buttonSize.width-10,buttonSize.height/2)];
+        [self addChild:self.backButton];
+
+        self.forwardButton = [self createButtonWithSize:buttonSize atPosition:CGPointMake(CGRectGetMidX(self.frame)+buttonSize.width+10,buttonSize.height/2)];
+        [self addChild:self.forwardButton];
+        
+        self.upButton = [self createButtonWithSize:buttonSize atPosition:CGPointMake(CGRectGetMidX(self.frame),buttonSize.height/2)];
+        [self addChild:self.upButton];
         
         SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"sprites"];
         SKTexture *playerSprite = [atlas textureNamed:@"player.png"];
@@ -60,11 +70,21 @@
     return self;
 }
 
+- (SKSpriteNode *)createButtonWithSize:(CGSize)size atPosition:(CGPoint)position{
+    SKSpriteNode *returnNode = [SKSpriteNode spriteNodeWithColor:[UIColor grayColor] size:size];
+    returnNode.position = position;
+    return returnNode;
+}
+
 - (void)didMoveToView:(SKView *)view{
+    
+    /*
     UIPanGestureRecognizer *playerControlGesture = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragPlayer:)];
     playerControlGesture.minimumNumberOfTouches = 1;
     playerControlGesture.delegate = self;
     [[self view] addGestureRecognizer:playerControlGesture];
+    */
+    
     /*
     UITapGestureRecognizer *shortThrust = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(applyShortThrust:)];
     shortThrust.delegate = self;
@@ -82,9 +102,17 @@
     
     [_parallaxNodeBackgrounds update:currentTime];    //other additional game background
     [_parallaxSpaceDust update:currentTime];
-    if (self.thrustOn) {
-        [self.player thrustWithForce:self.thrustForce];
-        self.thrustForce = (self.thrustForce < MAXTHRUST) ? self.thrustForce + THRUSTACCELERATION : MAXTHRUST;
+    if (self.upOn) {
+        [self.player thrustYWithForce:self.upForce];
+        self.upForce = (self.upForce < MAXTHRUST) ? self.upForce + THRUSTACCELERATION : MAXTHRUST;
+    }
+    if (self.forwardOn) {
+        [self.player thrustXWithForce:self.forwardForce];
+        self.forwardForce = (self.forwardForce < MAXTHRUST) ? self.forwardForce + THRUSTACCELERATION : MAXTHRUST;
+    }
+    if (self.backwardOn) {
+        [self.player thrustXWithForce:-self.backwardForce];
+        self.backwardForce = (self.backwardForce < MAXTHRUST) ? self.backwardForce + THRUSTACCELERATION : MAXTHRUST;
     }
     [self setViewpointCenter:self.player.position];
 }
@@ -176,23 +204,41 @@
     } else if (gesture.state == UIGestureRecognizerStateEnded) {
         NSLog(@"ending pan");
         self.movePlayer = NO;
-        self.thrustOn = NO;
-        self.thrustForce = INITIALTHRUST;
+        self.upOn = NO;
+        self.upForce = INITIALTHRUST;
     }
     
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSLog(@"touches began...");
-    self.thrustOn = YES;
-//    [self.player thrustContinousUp];
+    for(UITouch *touch in touches){
+        CGPoint location = [touch locationInNode:self];
+        SKNode *node = [self nodeAtPoint:location];
+        if([node isEqual:self.forwardButton]){
+            self.forwardOn = YES;
+        }else if([node isEqual:self.backButton]){
+            self.backwardOn = YES;
+        }else if([node isEqual:self.upButton]){
+            self.upOn = YES;
+        }
+    }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSLog(@"touches ended...");
-    self.thrustOn = NO;
-    self.thrustForce = INITIALTHRUST;
-//    [self.player stop];
+    for(UITouch *touch in touches){
+        CGPoint location = [touch locationInNode:self];
+        SKNode *node = [self nodeAtPoint:location];
+        if([node isEqual:self.forwardButton]){
+            self.forwardOn = NO;
+            self.forwardForce = INITIALTHRUST;
+        }else if([node isEqual:self.backButton]){
+            self.backwardOn = NO;
+            self.backwardForce = INITIALTHRUST;
+        }else if([node isEqual:self.upButton]){
+            self.upOn = NO;
+            self.upForce = INITIALTHRUST;
+        }
+    }
 }
 /**
  * Subtracts point2 from point1 and returns the result as a new CGPoint.
@@ -215,7 +261,7 @@ CGPoint CGPointSubtract(CGPoint point1, CGPoint point2) {
 -(void)applyShortThrust:(UITapGestureRecognizer *)gesture{
     CGPoint location = [gesture locationInView:gesture.view];
     location = [self convertPointFromView:location];
-    [self.player thrustWithForce:3];
+    [self.player thrustYWithForce:3];
 }
 
 
@@ -223,7 +269,7 @@ CGPoint CGPointSubtract(CGPoint point1, CGPoint point2) {
     NSLog(@"long thrust");
     CGPoint location = [gesture locationInView:gesture.view];
     location = [self convertPointFromView:location];
-    [self.player thrustWithForce:6];
+    [self.player thrustYWithForce:6];
 }
 
 

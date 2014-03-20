@@ -14,10 +14,14 @@
 @property (nonatomic, assign) CGPoint desiredPosition;
 @property (nonatomic, assign) CGPoint velocity;
 
-- (void)thrustWithForce:(double)force;
+- (void)thrustYWithForce:(double)force;
+- (void)thrustXWithForce:(double)force;
+
 - (void)thrustAtVelocity:(double)velocity;
 - (void)thrustContinousUp;
 - (void)stop;
 - (void)moveToPointX:(CGPoint)point;
+
+-(void)update:(CFTimeInterval)currentTime;
 
 @end

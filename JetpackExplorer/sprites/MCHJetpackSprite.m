@@ -18,9 +18,14 @@
     return self;
 }
 
-- (void)thrustWithForce:(double)force {
+- (void)thrustYWithForce:(double)force {
     self.physicsBody.velocity = CGVectorMake(0, 0);
     [self.physicsBody applyImpulse:CGVectorMake(0, force)];
+}
+
+- (void)thrustXWithForce:(double)force {
+    self.physicsBody.velocity = CGVectorMake(0, 0);
+    [self.physicsBody applyImpulse:CGVectorMake(force, GRAVITY)];
 }
 
 - (void)thrustAtVelocity:(double)velocity{
@@ -33,6 +38,10 @@
 
 - (void)stop{
     self.physicsBody.velocity = CGVectorMake(0, 0);
+}
+
+-(void)update:(CFTimeInterval)currentTime{
+    
 }
 
 /**
