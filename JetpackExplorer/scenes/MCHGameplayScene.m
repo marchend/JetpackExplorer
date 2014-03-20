@@ -43,10 +43,10 @@
         [self addPhysicsBodiesToTilesInLayer:self.walls];
 
         CGSize buttonSize = CGSizeMake(40, 40);
-        self.backButton = [self createButtonWithSize:buttonSize atPosition:CGPointMake(CGRectGetMidX(self.frame)-buttonSize.width-10,buttonSize.height/2)];
+        self.backButton = [self createButtonWithSize:buttonSize atPosition:CGPointMake(CGRectGetMidX(self.frame)-buttonSize.width*4,buttonSize.height/2)];
         [self addChild:self.backButton];
 
-        self.forwardButton = [self createButtonWithSize:buttonSize atPosition:CGPointMake(CGRectGetMidX(self.frame)+buttonSize.width+10,buttonSize.height/2)];
+        self.forwardButton = [self createButtonWithSize:buttonSize atPosition:CGPointMake(CGRectGetMidX(self.frame)+buttonSize.width*4,buttonSize.height/2)];
         [self addChild:self.forwardButton];
         
         self.upButton = [self createButtonWithSize:buttonSize atPosition:CGPointMake(CGRectGetMidX(self.frame),buttonSize.height/2)];
