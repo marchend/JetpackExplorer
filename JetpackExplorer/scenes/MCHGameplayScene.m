@@ -58,7 +58,7 @@
         
         self.physicsWorld.gravity = CGVectorMake(0, GRAVITY);
 
-        self.player = [[MCHJetpackSprite alloc] initWithTexture:playerSprite color:[UIColor whiteColor] size:CGSizeMake(21, 40)];
+        self.player = [[MCHJetpackSprite alloc] initWithTexture:playerSprite color:[UIColor whiteColor] size:CGSizeMake(40, 40)];
 //        jetpackToFall.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         self.player.position = CGPointMake(CGRectGetMidX(self.frame)-75, self.frame.size.height-60);
         self.player.textureArray = spriteTextureArray;
